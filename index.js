@@ -2,6 +2,12 @@ function toggleModal() {
   document.body.classList.toggle("modal--open");
 }
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && document.body.classList.contains("modal--open")) {
+    toggleModal();
+  }
+});
+
 function darkTheme() {
   document.body.classList.toggle("darkTheme");
 }

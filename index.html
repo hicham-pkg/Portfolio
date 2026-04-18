@@ -33,7 +33,7 @@
     <section id="landing-page" onmousemove="moveBackground(event)">
       <nav>
         <figure class="personal-logo--container" onclick="darkTheme()">
-          <img src="./assets/logo.svg" id="personal-logo" />
+          <img src="./assets/logo.svg" alt="Hicham Tabbakh logo — click to toggle theme" id="personal-logo" />
         </figure>
         <ul class="nav__link--list">
           <li class="nav__link" onclick="toggleModal()">
@@ -141,28 +141,32 @@
           <div class="modal__languages">
             <figure class="modal__language--container">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+                src="./assets/icons/html5.svg"
+                alt="HTML5"
                 class="modal__language--img"
               />
               <span class="language__name">HTML</span>
             </figure>
             <figure class="modal__language--container">
               <img
-                src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png"
+                src="./assets/icons/css3.svg"
+                alt="CSS3"
                 class="modal__language--img"
               />
               <span class="language__name">CSS</span>
             </figure>
             <figure class="modal__language--container">
               <img
-                src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png"
+                src="./assets/icons/javascript.svg"
+                alt="JavaScript"
                 class="modal__language--img"
               />
               <span class="language__name">JavaScript</span>
             </figure>
             <figure class="modal__language--container">
               <img
-                src="https://cdn.iconscout.com/icon/free/png-256/react-3-1175109.png"
+                src="./assets/icons/react.svg"
+                alt="React"
                 class="modal__language--img"
               />
               <span class="language__name">React</span>
@@ -173,6 +177,10 @@
           <i
             class="fa-solid fa-times modal__exit click"
             onclick="toggleModal()"
+            role="button"
+            aria-label="Close dialog"
+            tabindex="0"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModal();}"
           ></i>
           <h3 class="modal__title modal__title--contact">Get in touch</h3>
           <h4 class="modal__sub-title modal__sub-title--contact">
@@ -213,15 +221,15 @@
           </ul>
         </div>
       </div>
-      <img src="./assets/circle.svg" class="shape shape--0" />
-      <img src="./assets/triangle.svg" class="shape shape--1" />
-      <img src="./assets/semi_circle.svg" class="shape shape--2" />
-      <img src="./assets/semi_circle.svg" class="shape shape--3" />
-      <img src="./assets/squiggly.svg" class="shape shape--4" />
-      <img src="./assets/squiggly.svg" class="shape shape--5" />
-      <img src="./assets/circle.svg" class="shape shape--6" />
-      <img src="./assets/triangle.svg" class="shape shape--7" />
-      <img src="./assets/circle.svg" class="shape shape--8" />
+      <img src="./assets/circle.svg" alt="" aria-hidden="true" class="shape shape--0" />
+      <img src="./assets/triangle.svg" alt="" aria-hidden="true" class="shape shape--1" />
+      <img src="./assets/semi_circle.svg" alt="" aria-hidden="true" class="shape shape--2" />
+      <img src="./assets/semi_circle.svg" alt="" aria-hidden="true" class="shape shape--3" />
+      <img src="./assets/squiggly.svg" alt="" aria-hidden="true" class="shape shape--4" />
+      <img src="./assets/squiggly.svg" alt="" aria-hidden="true" class="shape shape--5" />
+      <img src="./assets/circle.svg" alt="" aria-hidden="true" class="shape shape--6" />
+      <img src="./assets/triangle.svg" alt="" aria-hidden="true" class="shape shape--7" />
+      <img src="./assets/circle.svg" alt="" aria-hidden="true" class="shape shape--8" />
     </section>
     <section id="projects">
       <div class="container">
@@ -232,7 +240,7 @@
           <ul class="project__list">
             <li class="project first__project">
               <div class="project__wrapper">
-                <img src="./assets/TwentyZero.png" class="project__img" />
+                <img src="./assets/TwentyZero.png" alt="TwentyZero landing page screenshot" class="project__img" />
                 <div class="project__wrapper--bg"></div>
                 <div class="project__description">
                   <h3 class="project__description--title">TwentyZero</h3>
@@ -259,7 +267,7 @@
             </li>
             <li class="project">
               <div class="project__wrapper">
-                <img src="./assets/Bizzone.png" class="project__img" />
+                <img src="./assets/Bizzone.png" alt="Bizzone landing page screenshot" class="project__img" />
                 <div class="project__wrapper--bg"></div>
                 <div class="project__description">
                   <h3 class="project__description--title">Bizzone</h3>
@@ -284,7 +292,7 @@
             </li>
             <li class="project">
               <div class="project__wrapper">
-                <img src="./assets/librarywebsite.png" class="project__img" />
+                <img src="./assets/librarywebsite.png" alt="E-Commerce application screenshot" class="project__img" />
                 <div class="project__wrapper--bg"></div>
                 <div class="project__description">
                   <h3 class="project__description--title">
@@ -306,7 +314,7 @@
             </li>
             <li class="project">
               <div class="project__wrapper">
-                <img src="./assets/bookr.png" class="project__img" />
+                <img src="./assets/bookr.png" alt="Bookr booking site screenshot" class="project__img" />
                 <div class="project__wrapper--bg"></div>
                 <div class="project__description">
                   <h3 class="project__description--title">Bookr</h3>
@@ -339,7 +347,7 @@
         <div class="row footer__row">
           <figure class="footer__logo--container">
             <a href="#">
-              <img src="./assets/logo.svg" class="footer__logo--img" />
+              <img src="./assets/logo.svg" alt="Hicham Tabbakh logo" class="footer__logo--img" />
             </a>
           </figure>
           <div class="footer__social--list">
