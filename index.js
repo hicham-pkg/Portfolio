@@ -24,8 +24,3 @@ function moveBackground(event) {
   }
 }
 
-function alertNotification() {
-  alert("still in progress.")
-}
-
-
