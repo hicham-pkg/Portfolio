@@ -684,6 +684,45 @@ nav {
   cursor: pointer;
 }
 
+/* CONTACT LIST */
+.contact__list {
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.contact__item {
+  width: 100%;
+}
+
+.contact__link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  transition: all 300ms ease;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contact__link:hover {
+  border-color: #0087cd;
+  background-color: rgba(0, 135, 205, 0.1);
+}
+
+.contact__icon {
+  color: #0087cd;
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
 /* PROJECTS */
 .projects__title {
   text-align: center;

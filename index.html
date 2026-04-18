@@ -28,15 +28,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      ;(function () {
-        emailjs.init("8WONITuUm0K1UeqAQ")
-      })()
-    </script>
   </head>
   <body>
     <section id="landing-page" onmousemove="moveBackground(event)">
@@ -177,41 +168,43 @@
             class="fa-solid fa-times modal__exit click"
             onclick="toggleModal()"
           ></i>
-          <h3 class="modal__title modal__title--contact">Let's have a chat!</h3>
+          <h3 class="modal__title modal__title--contact">Get in touch</h3>
           <h4 class="modal__sub-title modal__sub-title--contact">
-            I'm currently not open to new work.
+            Direct links — pick whichever is easiest.
           </h4>
-          <form id="contact__form" onsubmit="contact(event)">
-            <div class="form__item">
-              <label class="form__item--label">Name</label>
-              <input class="input" name="user_name" type="text" required />
-            </div>
-            <div class="form__item">
-              <label class="form__item--label">Email</label>
-              <input class="input" name="user_email" type="email" required />
-            </div>
-            <div class="form__item">
-              <label class="form__item--label">Message</label>
-              <textarea
-                class="input message__area"
-                name="message"
-                required
-              ></textarea>
-            </div>
-            <button id="contact__submit" class="form__submit">
-              Send it my way!
-            </button>
-          </form>
-          <div class="modal__overlay modal__overlay--loading">
-            <i class="fa-solid fa-spinner"></i>
-          </div>
-          <div class="modal__overlay modal__overlay--succes">
-            <p class="overlay--succes__text">
-              Thanks for the message!
-              <br />
-              I'll be in contact with you soon!
-            </p>
-          </div>
+          <ul class="contact__list">
+            <li class="contact__item">
+              <a
+                class="contact__link click cursor__hover"
+                href="mailto:redacted.invalid"
+              >
+                <i class="fa-solid fa-envelope contact__icon"></i>
+                <span>redacted.invalid</span>
+              </a>
+            </li>
+            <li class="contact__item">
+              <a
+                class="contact__link click cursor__hover"
+                href="https://github.com/hicham-pkg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-github contact__icon"></i>
+                <span>github.com/hicham-pkg</span>
+              </a>
+            </li>
+            <li class="contact__item">
+              <a
+                class="contact__link click cursor__hover"
+                href="https://www.linkedin.com/in/hicham-tabbakh-b0920038a/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-linkedin-in contact__icon"></i>
+                <span>linkedin.com/in/hicham-tabbakh</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <img src="./assets/circle.svg" class="shape shape--0" />

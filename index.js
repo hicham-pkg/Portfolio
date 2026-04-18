@@ -1,27 +1,3 @@
-function contact() {
-  event.preventDefault();
-  const loading = document.querySelector(".modal__overlay--loading");
-  const succes = document.querySelector(".modal__overlay--succes");
-  loading.classList.remove("modal__overlay--visible");
-
-  emailjs
-    .sendForm(
-      "service_wfajlup",
-      "template_22w9e8f",
-      event.target,
-      "8WONITuUm0K1UeqAQ"
-    )
-    .then(() => {
-      loading.classList.remove("modal__overlay--visible");
-      succes.classList += " modal__overlay--visible";
-    })
-    .catch(() => {
-      alert(
-        "The email service is temporarly unavailable. Please contact me directly"
-      );
-    });
-}
-
 function toggleModal() {
   document.body.classList.toggle("modal--open");
 }
