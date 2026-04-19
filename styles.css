@@ -1219,4 +1219,24 @@ footer .container {
   .project__description--link:not(:last-child) {
     margin-right: 0;
   }
+
+  /* Enlarge header social circles to meet 44×44 tap target on touch */
+  .social__link {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .social__link:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  /* Enlarge footer social text links to meet 44px tap target on touch */
+  .footer__social--link {
+    padding: 12px 10px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
