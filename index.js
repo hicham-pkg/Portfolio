@@ -1,10 +1,29 @@
+function getModal() {
+  return document.querySelector(".modal");
+}
+
+function setModalOpen(isOpen) {
+  const modal = getModal();
+
+  document.body.classList.toggle("modal--open", isOpen);
+
+  if (modal) {
+    modal.setAttribute("aria-hidden", String(!isOpen));
+
+    if (isOpen) {
+      const closeButton = modal.querySelector("[data-action='close-modal']");
+      (closeButton || modal).focus();
+    }
+  }
+}
+
 function toggleModal() {
-  document.body.classList.toggle("modal--open");
+  setModalOpen(!document.body.classList.contains("modal--open"));
 }
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && document.body.classList.contains("modal--open")) {
-    toggleModal();
+    setModalOpen(false);
   }
 });
 
@@ -44,8 +63,6 @@ function setupEmailLinks() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", setupEmailLinks);
-
 const scaleFactor = 1 / 20;
 const scaleFactor2 = 1 / 5;
 
@@ -63,3 +80,42 @@ function moveBackground(event) {
     }px) rotate(${xRot * boolInt}deg)`;
   }
 }
+
+function setupActions() {
+  const actionElements = document.querySelectorAll("[data-action]");
+
+  for (let i = 0; i < actionElements.length; i++) {
+    actionElements[i].addEventListener("click", (event) => {
+      const action = event.currentTarget.dataset.action;
+
+      if (action === "open-modal") {
+        event.preventDefault();
+        setModalOpen(true);
+      }
+
+      if (action === "close-modal") {
+        event.preventDefault();
+        setModalOpen(false);
+      }
+
+      if (action === "toggle-theme") {
+        event.preventDefault();
+        darkTheme();
+      }
+    });
+  }
+}
+
+function setupBackgroundMotion() {
+  const landingPage = document.querySelector("#landing-page");
+
+  if (landingPage) {
+    landingPage.addEventListener("mousemove", moveBackground);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupEmailLinks();
+  setupActions();
+  setupBackgroundMotion();
+});

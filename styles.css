@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: "Avenir Next", "Helvetica Neue", sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -36,7 +34,7 @@ p {
 .title,
 .header__para,
 .nav__link--anchor,
-.fa-adjust,
+.nav__theme-button,
 .projects__title {
   transition: 300ms color ease-in-out !important;
 }
@@ -56,7 +54,7 @@ section {
 .darkTheme .title,
 .darkTheme .header__para,
 .darkTheme .nav__link--anchor,
-.darkTheme .fa-adjust,
+.darkTheme .nav__theme-button,
 .darkTheme .projects__title {
   color: #fff;
 }
@@ -112,6 +110,40 @@ li {
 
 button {
   cursor: pointer;
+  font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #0087cd;
+  outline-offset: 4px;
+}
+
+.icon-sprite {
+  display: none;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.brand-mark {
+  font-size: 0.72em;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.text-button {
+  background: none;
+  border: 0;
+  padding: 0;
 }
 
 html {
@@ -378,10 +410,6 @@ label::before {
   animation: scroll 1000ms infinite alternate-reverse;
 }
 
-.fa-spinner {
-  animation: spinner 1000ms infinite linear;
-}
-
 /* LANDING PAGE */
 
 #landing-page {
@@ -419,15 +447,14 @@ label::before {
   bottom: 40px;
   position: fixed;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.mail__button--link {
-  width: 32px !important;
-  height: 32px !important;
-}
-
-.fa-envelope {
-  color: white;
+.mail__button--icon {
+  width: 32px;
+  height: 32px;
 }
 
 .scroll {
@@ -462,6 +489,9 @@ label::before {
 .personal-logo--container {
   width: 50px;
   height: 50px;
+  background: none;
+  border: 0;
+  padding: 0;
 }
 
 #personal-logo {
@@ -496,18 +526,24 @@ nav {
   display: flex;
 }
 
-.nav__link a {
+.nav__link--anchor {
+  background: none;
+  border: 0;
+  padding: 0;
   font-size: 16px;
   font-weight: 700;
   text-decoration: none;
   color: #242424;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .nav__link {
   margin: 0 12px;
 }
 
-.fa-adjust {
+.nav__theme-button {
   font-size: 20px;
 }
 
@@ -678,6 +714,11 @@ nav {
   font-size: 36px;
   color: #fff;
   z-index: 999;
+  background: none;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal__exit:hover {
@@ -720,6 +761,7 @@ nav {
   color: #0087cd;
   font-size: 20px;
   width: 24px;
+  min-width: 24px;
   text-align: center;
 }
 
@@ -759,21 +801,25 @@ nav {
 }
 
 @media (hover: hover) {
-  .project__wrapper:hover .project__description {
+  .project__wrapper:hover .project__description,
+  .project__wrapper:focus-within .project__description {
     opacity: 1;
     transform: translateY(-50%);
   }
 
-  .project__wrapper:hover .project__img {
+  .project__wrapper:hover .project__img,
+  .project__wrapper:focus-within .project__img {
     transform: scale(1.07);
     filter: blur(5px);
   }
 
-  .project__wrapper:hover .project__wrapper--bg {
+  .project__wrapper:hover .project__wrapper--bg,
+  .project__wrapper:focus-within .project__wrapper--bg {
     opacity: 0.5;
   }
 
-  .project__wrapper:hover {
+  .project__wrapper:hover,
+  .project__wrapper:focus-within {
     transform: scale(1.05);
   }
 }
@@ -1113,13 +1159,15 @@ footer .container {
 
 /* Narrow desktop (cursor + small window): tweak hover-overlay centering */
 @media (hover: hover) and (max-width: 768px) {
-  .project__wrapper:hover .project__description {
+  .project__wrapper:hover .project__description,
+  .project__wrapper:focus-within .project__description {
     transform: translateY(-40%) translateX(-50%);
   }
 }
 
 @media (hover: hover) and (max-width: 480px) {
-  .project__wrapper:hover .project__description {
+  .project__wrapper:hover .project__description,
+  .project__wrapper:focus-within .project__description {
     transform: translateY(-50%) translateX(-50%);
   }
 }

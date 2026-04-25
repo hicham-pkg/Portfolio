@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Hicham Tabbakh — Portfolio</title>
 
     <meta name="description" content="Self-taught frontend developer from Casablanca, preparing for Computer Science studies." />
@@ -23,21 +28,41 @@
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="./assets/fav.ico" type="image/x-icon" />
 
-    <script
-      src="https://kit.fontawesome.com/492fd5106e.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </head>
   <body>
-    <section id="landing-page" onmousemove="moveBackground(event)">
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-envelope" viewBox="0 0 24 24">
+        <path d="M4 6h16v12H4z" />
+        <path d="m4 7 8 6 8-6" />
+      </symbol>
+      <symbol id="icon-link" viewBox="0 0 24 24">
+        <path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11.5 4.43" />
+        <path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.33-1.33" />
+      </symbol>
+      <symbol id="icon-theme" viewBox="0 0 24 24">
+        <path d="M12 3a9 9 0 1 0 9 9 6.5 6.5 0 0 1-9-9z" />
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12" />
+        <path d="m18 6-12 12" />
+      </symbol>
+    </svg>
+    <section id="landing-page">
       <nav>
-        <figure class="personal-logo--container" onclick="darkTheme()">
+        <button
+          type="button"
+          class="personal-logo--container"
+          data-action="toggle-theme"
+          aria-label="Toggle color theme"
+        >
           <img src="./assets/logo.svg" alt="Hicham Tabbakh logo — click to toggle theme" id="personal-logo" />
-        </figure>
+        </button>
         <ul class="nav__link--list">
-          <li class="nav__link" onclick="toggleModal()">
+          <li class="nav__link">
             <a
+              href="#contact"
+              data-action="open-modal"
               class="nav__link--anchor link__hover-effect link__hover-effect--black"
               >About</a
             >
@@ -49,17 +74,25 @@
               >Projects</a
             >
           </li>
-          <li class="nav__link" onclick="toggleModal()">
+          <li class="nav__link">
             <a
-              href="#"
+              href="#contact"
+              data-action="open-modal"
               class="nav__link--anchor link__hover-effect link__hover-effect--black"
               >Contact</a
             >
           </li>
-          <li class="nav__link click" onclick="darkTheme()">
-            <a href="#" class="nav__link--anchor"
-              ><i class="fa-solid fa-adjust fa-circle-half-stroke"></i
-            ></a>
+          <li class="nav__link">
+            <button
+              type="button"
+              class="nav__link--anchor nav__theme-button click"
+              data-action="toggle-theme"
+              aria-label="Toggle color theme"
+            >
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-theme"></use>
+              </svg>
+            </button>
           </li>
         </ul>
       </nav>
@@ -76,10 +109,12 @@
             interfaces.
             <br />
             Here's a bit more
-            <span
-              class="text--blue text--bold cursor--pointer"
-              onclick="toggleModal()"
-              >about me</span
+            <button
+              type="button"
+              class="text-button text--blue text--bold cursor--pointer"
+              data-action="open-modal"
+            >
+              about me</button
             >.
           </p>
           <div class="social__links">
@@ -90,7 +125,7 @@
               aria-label="LinkedIn"
               class="social__link click cursor__hover"
             >
-              <i class="fa-brands fa-linkedin-in"></i>
+              <span class="brand-mark" aria-hidden="true">in</span>
             </a>
             <a
               href="https://github.com/hicham-pkg"
@@ -99,7 +134,7 @@
               aria-label="GitHub"
               class="social__link click cursor__hover"
             >
-              <i class="fa-brands fa-github"></i>
+              <span class="brand-mark" aria-hidden="true">GH</span>
             </a>
             <a
               href="#"
@@ -109,20 +144,35 @@
               data-email-domain="104,105,99,104,97,109,100,101,118"
               data-email-tld="99,111,109"
             >
-              <i class="fa-solid fa-envelope"></i>
+              <svg class="icon" aria-hidden="true">
+                <use href="#icon-envelope"></use>
+              </svg>
             </a>
           </div>
         </div>
       </header>
-      <button class="mail__button click" onclick="toggleModal()">
-        <a href="#" class="mail__button--link">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
+      <button
+        type="button"
+        class="mail__button click"
+        data-action="open-modal"
+        aria-label="Open contact options"
+      >
+        <svg class="icon mail__button--icon" aria-hidden="true">
+          <use href="#icon-envelope"></use>
+        </svg>
       </button>
-      <a href="#projects" class="scroll">
+      <a href="#projects" class="scroll" aria-label="Skip to projects">
         <div class="scroll__icon click"></div>
       </a>
-      <div class="modal">
+      <div
+        class="modal"
+        id="contact"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-heading"
+        aria-hidden="true"
+        tabindex="-1"
+      >
         <div class="modal__half modal__about">
           <h3 class="modal__title modal__title--about">
             Here's a bit about me
@@ -177,15 +227,17 @@
           </div>
         </div>
         <div class="modal__half modal__contact">
-          <i
-            class="fa-solid fa-times modal__exit click"
-            onclick="toggleModal()"
-            role="button"
+          <button
+            type="button"
+            class="modal__exit click"
+            data-action="close-modal"
             aria-label="Close dialog"
-            tabindex="0"
-            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleModal();}"
-          ></i>
-          <h3 class="modal__title modal__title--contact">Get in touch</h3>
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#icon-close"></use>
+            </svg>
+          </button>
+          <h3 class="modal__title modal__title--contact" id="contact-heading">Get in touch</h3>
           <h4 class="modal__sub-title modal__sub-title--contact">
             Direct links — pick whichever is easiest.
           </h4>
@@ -198,7 +250,9 @@
                 data-email-domain="104,105,99,104,97,109,100,101,118"
                 data-email-tld="99,111,109"
               >
-                <i class="fa-solid fa-envelope contact__icon"></i>
+                <svg class="icon contact__icon" aria-hidden="true">
+                  <use href="#icon-envelope"></use>
+                </svg>
                 <span class="js-email-text">Email me</span>
               </a>
             </li>
@@ -209,7 +263,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i class="fa-brands fa-github contact__icon"></i>
+                <span class="contact__icon brand-mark" aria-hidden="true">GH</span>
                 <span>github.com/hicham-pkg</span>
               </a>
             </li>
@@ -220,7 +274,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i class="fa-brands fa-linkedin-in contact__icon"></i>
+                <span class="contact__icon brand-mark" aria-hidden="true">in</span>
                 <span>linkedin.com/in/hicham-tabbakh</span>
               </a>
             </li>
@@ -266,7 +320,9 @@
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <i class="fa-solid fa-link"></i>
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#icon-link"></use>
+                      </svg>
                       <span>View project</span>
                     </a>
                   </div>
@@ -293,7 +349,9 @@
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <i class="fa-solid fa-link"></i>
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#icon-link"></use>
+                      </svg>
                       <span>View project</span>
                     </a>
                   </div>
@@ -321,7 +379,9 @@
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <i class="fa-solid fa-link"></i>
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#icon-link"></use>
+                      </svg>
                       <span>View project</span>
                     </a>
                   </div>
@@ -336,7 +396,7 @@
       <div class="container">
         <div class="row footer__row">
           <figure class="footer__logo--container">
-            <a href="#">
+            <a href="#" aria-label="Back to top">
               <img src="./assets/logo.svg" alt="Hicham Tabbakh logo" class="footer__logo--img" />
             </a>
           </figure>
@@ -358,8 +418,8 @@
               LinkedIn</a
             >
             <a
-              href="#"
-              onclick="toggleModal()"
+              href="#contact"
+              data-action="open-modal"
               class="footer__social--link link__hover-effect link__hover-effect--white"
             >
               Contact</a
