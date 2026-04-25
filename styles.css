@@ -133,13 +133,6 @@ button:focus-visible {
   stroke-width: 2;
 }
 
-.brand-mark {
-  font-size: 0.72em;
-  font-weight: 900;
-  letter-spacing: 0;
-  line-height: 1;
-}
-
 .text-button {
   background: none;
   border: 0;
